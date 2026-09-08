@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Graphenglass · materiales para construir retos</title>
+<meta name="description" content="Del requisito técnico a la producción en serie. MultiLayer y GOHNEX, la vertical UAV / Defence y la industrialización de Graphenglass, contadas capítulo a capítulo.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230B0D10'/><path d='M16 6l8 4.6v9.2L16 24.4 8 19.8v-9.2L16 6z' fill='none' stroke='%232E7DFF' stroke-width='2.2'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<style>
+/* ============================================================
+   GRAPHENGLASS — chaptered editorial theme
+   Six roles, two grounds. Paper (technical drafting stock) and
+   graphite (the material itself, seen close). One accent hue,
+   two lightnesses, keyed to each ground per taste.md's hard-cut rule.
+   ============================================================ */
+:root {
+  --sc-canvas:      #EEF2F7;   /* light chapters: cold drafting-paper, not warm cream */
+  --sc-surface:     #FFFFFF;
+  --sc-ink:         #10151C;
+  --sc-ink-soft:    #4B5A6B;   /* tinted from the ink, not flat gray */
+  --sc-accent:      #0B4CA0;   /* deep blue — reads on the light ground */
+  --sc-accent-ink:  #FFFFFF;
+  --sc-hairline:        color-mix(in oklab, var(--sc-ink) 14%, transparent);
+  --sc-hairline-strong: color-mix(in oklab, var(--sc-ink) 26%, transparent);
+
+  --sc-font-display: "Archivo", system-ui, sans-serif;
+  --sc-font-text:    "IBM Plex Sans", system-ui, sans-serif;
+  --sc-font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  --sc-t-4xl: clamp(2.6rem, 1.2rem + 6.6vw, 6.6rem);
+  --sc-t-3xl: clamp(2.3rem, 1.5rem + 3.6vw, 4.3rem);
+}
+
+/* Dark chapters restate the whole role set, plus `color`, per taste.md's
+   note that inherited `color` does not follow a redefined token. */
+.ch--dark {
+  --sc-canvas: #0B0D10;
+  --sc-surface: #14181E;
+  --sc-ink: #EEF1F6;
+  --sc-ink-soft: #8C97A6;
+  --sc-accent: #5B9CFF;      /* same hue, lifted for the dark ground */
+  --sc-accent-ink: #0B0D10;
+  --sc-hairline: color-mix(in oklab, var(--sc-ink) 16%, transparent);
+  --sc-hairline-strong: color-mix(in oklab, var(--sc-ink) 30%, transparent);
+  background: var(--sc-canvas);
+  color: var(--sc-ink);
+}
+.ch--light { background: var(--sc-canvas); color: var(--sc-ink); }
+
+body { background: var(--sc-canvas); }
+
+/* ---------- folio (the nav for this grammar) ---------- */
+.folio {
+  position: fixed;
+  z-index: var(--sc-z-chrome);
+  top: var(--sc-6);
+  left: var(--sc-gutter);
+  font-family: var(--sc-font-mono);
+  font-size: var(--sc-t-xs);
+  letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase;
+  color: var(--sc-ink-soft);
+  mix-blend-mode: normal;
+  pointer-events: none;
+  display: flex;
+  gap: 0.9em;
+  align-items: baseline;
+}
+.folio__num { color: var(--sc-accent); font-weight: 600; }
+.folio__title { transition: opacity 220ms var(--sc-ease-out); }
+
+/* ---------- chapter shell ---------- */
+.chapter { position: relative; }
+.chapter__pad { padding-block: var(--sc-9) var(--sc-9); }
+
+/* ---------- title page (chapter 01) ---------- */
+.titlepage {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--sc-10);
+}
+.titlepage__kicker {
+  font-family: var(--sc-font-mono);
+  font-size: var(--sc-t-sm);
+  letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase;
+  color: var(--sc-accent);
+  margin-bottom: var(--sc-6);
+}
+.titlepage h1 {
+  font-family: var(--sc-font-display);
+  font-weight: 800;
+  font-size: var(--sc-t-4xl);
+  line-height: var(--sc-leading-none);
+  letter-spacing: var(--sc-track-tight);
+  text-wrap: balance;
+  max-width: 20ch;
+  margin: 0 0 var(--sc-6);
+}
+.titlepage__sub { max-width: 46ch; font-size: var(--sc-t-lg); color: var(--sc-ink-soft); text-wrap: pretty; }
+.titlepage__meta {
+  margin-top: var(--sc-9);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sc-7);
+  font-family: var(--sc-font-mono);
+  font-size: var(--sc-t-xs);
+  letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase;
+  color: var(--sc-ink-soft);
+  border-top: 1px solid var(--sc-hairline);
+  padding-top: var(--sc-4);
+}
+.titlepage__meta b { color: var(--sc-ink); font-weight: 600; }
+
+/* ---------- flow / prose ---------- */
+.prose { max-width: var(--sc-measure); }
+.prose p { color: var(--sc-ink-soft); }
+.eyebrow {
+  display: block;
+  font-family: var(--sc-font-mono);
+  font-size: var(--sc-t-xs);
+  letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase;
+  color: var(--sc-accent);
+  margin-bottom: var(--sc-4);
+}
+
+/* ---------- 02 · capabilities: the ten-week ledger ---------- */
+.ledger { display: grid; gap: 0; margin-top: var(--sc-8); }
+.ledger__row {
+  display: grid;
+  grid-template-columns: 5rem 1fr auto;
+  gap: var(--sc-6);
+  align-items: baseline;
+  padding-block: var(--sc-5);
+  border-top: 1px solid var(--sc-hairline);
+}
+.ledger__row:last-child { border-bottom: 1px solid var(--sc-hairline); }
+.ledger__num { font-family: var(--sc-font-mono); color: var(--sc-accent); font-size: var(--sc-t-sm); }
+.ledger__label { font-size: var(--sc-t-lg); font-weight: 600; letter-spacing: var(--sc-track-snug); }
+.ledger__dur { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); white-space: nowrap; }
+.ledger__total {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-top: var(--sc-6); margin-top: var(--sc-2);
+  font-family: var(--sc-font-mono); letter-spacing: var(--sc-track-wide); text-transform: uppercase;
+}
+.ledger__total b { font-family: var(--sc-font-display); font-size: var(--sc-t-2xl); color: var(--sc-accent); text-transform: none; letter-spacing: var(--sc-track-tight); }
+@media (max-width: 560px) {
+  .ledger__row { grid-template-columns: 2.5rem 1fr; row-gap: 0.3rem; }
+  .ledger__dur { grid-column: 2; }
+  .ledger__total { flex-direction: column; align-items: flex-start; gap: var(--sc-2); }
+}
+
+/* ---------- 03 · technologies: the layer section (signature move) ---------- */
+.layersec { display: grid; grid-template-columns: 1fr 1.15fr; gap: var(--sc-9); align-items: start; }
+.layersec__diagram {
+  position: sticky;
+  top: 14vh;
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  padding: var(--sc-7);
+}
+.layerstack { position: relative; width: 100%; max-width: 22rem; }
+.layerstack__plate {
+  position: relative;
+  height: 3.1rem;
+  margin-top: -0.55rem;
+  border: 1px solid var(--sc-hairline-strong);
+  border-radius: var(--sc-r-sm);
+  background: var(--sc-surface);
+  display: flex;
+  align-items: center;
+  padding-inline: var(--sc-5);
+  font-family: var(--sc-font-mono);
+  font-size: var(--sc-t-xs);
+  letter-spacing: var(--sc-track-wide);
+  text-transform: uppercase;
+  color: var(--sc-ink-soft);
+  opacity: 0.35;
+  transform: translateX(0) scale(0.97);
+  transition: transform 420ms var(--sc-ease-drawer), opacity 320ms var(--sc-ease-out), background 320ms var(--sc-ease-out), border-color 320ms var(--sc-ease-out);
+}
+.layerstack__plate:first-child { margin-top: 0; }
+.layerstack__plate b { color: var(--sc-ink); font-weight: 600; margin-right: 0.6em; text-transform: none; letter-spacing: var(--sc-track-normal); font-family: var(--sc-font-text); }
+.layerstack__plate.is-active {
+  opacity: 1;
+  border-color: var(--sc-accent);
+  background: color-mix(in oklab, var(--sc-accent) 8%, var(--sc-surface));
+  transform: translateX(0.9rem) scale(1.04);
+  z-index: 2;
+}
+.layerstack__plate:nth-child(odd).is-active { transform: translateX(-0.9rem) scale(1.04); }
+
+.laysteps { display: flex; flex-direction: column; gap: var(--sc-9); padding-block: var(--sc-8); }
+.laystep { border-top: 1px solid var(--sc-hairline); padding-top: var(--sc-6); opacity: 0.4; transition: opacity 280ms var(--sc-ease-out); }
+.laystep.is-active { opacity: 1; }
+.laystep h3 { font-size: var(--sc-t-xl); margin: 0 0 0.4em; letter-spacing: var(--sc-track-snug); }
+.laystep p { color: var(--sc-ink-soft); max-width: 42ch; }
+.laystep__mats { margin-top: var(--sc-3); font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); color: var(--sc-accent); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
+
+@media (max-width: 880px) {
+  .layersec { grid-template-columns: 1fr; }
+  .layersec__diagram { position: relative; top: 0; }
+}
+
+/* ---------- tech split (mid columns with figure) ---------- */
+.techsplit { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sc-8); align-items: start; margin-top: var(--sc-9); }
+.techsplit figure { margin: 0; }
+.techsplit figure img { width: 100%; border-radius: var(--sc-r-sm); }
+.techsplit figcaption { margin-top: var(--sc-3); font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); letter-spacing: var(--sc-track-normal); }
+.spectag { display: inline-block; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-accent); border: 1px solid currentColor; border-radius: var(--sc-r-sm); padding: 0.3em 0.6em; margin: 0 0.4em 0.4em 0; }
+@media (max-width: 780px) { .techsplit { grid-template-columns: 1fr; } }
+
+/* ---------- 04 · proven (the peak) ---------- */
+.peak { position: relative; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; }
+.peak__bg { position: absolute; inset: 0; }
+.peak__bg img { width: 100%; height: 100%; object-fit: cover; }
+.peak__scrim { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(11,13,16,.94) 0%, rgba(11,13,16,.5) 42%, rgba(11,13,16,.08) 68%); }
+.peak__copy { position: relative; z-index: 1; padding: var(--sc-9) var(--sc-gutter) var(--sc-10); max-width: 44rem; }
+.peak__quote { font-family: var(--sc-font-display); font-weight: 700; font-size: clamp(1.7rem, 1.1rem + 2.6vw, 3rem); line-height: 1.14; letter-spacing: var(--sc-track-snug); text-wrap: balance; color: #fff; }
+.peak__quote em { font-style: normal; color: var(--sc-accent); }
+.peak__figures { margin-top: var(--sc-7); display: flex; gap: var(--sc-8); flex-wrap: wrap; }
+.peak__fig b { display: block; font-family: var(--sc-font-display); font-weight: 800; font-size: var(--sc-t-2xl); color: #fff; letter-spacing: var(--sc-track-tight); font-variant-numeric: tabular-nums; }
+.peak__fig span { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: #C7D2E0; }
+
+.peak__strip { display: grid; grid-template-columns: repeat(3, 1fr); }
+.peak__strip img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+
+/* the intake of breath — authored silence before the cut into ch.04 */
+.breath { height: 34vh; display: flex; align-items: center; justify-content: center; }
+.breath__line { width: 3.5rem; height: 1px; background: var(--sc-hairline-strong); }
+
+/* ---------- 05 · industrialization ---------- */
+.plant { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--sc-9); align-items: center; }
+.plant figure { margin: 0; }
+.plant figure img { width: 100%; border-radius: var(--sc-r-sm); }
+.plant__stats { display: grid; gap: var(--sc-7); }
+.stat b { display: block; font-family: var(--sc-font-display); font-weight: 800; font-size: var(--sc-t-3xl); letter-spacing: var(--sc-track-tight); font-variant-numeric: tabular-nums; color: var(--sc-ink); }
+.stat span { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); }
+@media (max-width: 820px) { .plant { grid-template-columns: 1fr; } }
+
+/* ---------- 06 · close / colophon ---------- */
+.colophon { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; }
+.colophon h2 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); max-width: 18ch; letter-spacing: var(--sc-track-tight); text-wrap: balance; margin: 0 0 var(--sc-6); }
+.colophon__cta { font-size: var(--sc-t-xl); font-weight: 600; }
+.colophon__cta a { color: var(--sc-accent); text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 1.5px; }
+.colophon__plate {
+  margin-top: var(--sc-10);
+  padding-top: var(--sc-6);
+  border-top: 1px solid var(--sc-hairline);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sc-4) var(--sc-8);
+  font-family: var(--sc-font-mono);
+  font-size: var(--sc-t-xs);
+  letter-spacing: var(--sc-track-normal);
+  color: var(--sc-ink-soft);
+}
+.colophon__plate a { color: var(--sc-ink-soft); }
+.colophon__plate a:hover { color: var(--sc-ink); }
+</style>
+</head>
+<body>
+
+<div class="sc-grain" aria-hidden="true"></div>
+<nav class="folio" aria-label="Índice de capítulos">
+  <span class="folio__num" data-folio-num>01</span>
+  <span class="folio__title" data-folio-title>Cover</span>
+</nav>
+
+<main id="top">
+
+  <!-- ================= CH. 01 — COVER (title page) ================= -->
+  <section class="chapter ch--light" data-chapter="01" data-chapter-title="Cover">
+    <div class="sc-wrap titlepage">
+      <span class="titlepage__kicker">Graphenglass — Advanced Composite Engineering</span>
+      <h1>Materials to build challenges</h1>
+      <p class="titlepage__sub">Ingeniería de materiales compuestos con grafeno: del requisito técnico a la producción en serie.</p>
+      <div class="titlepage__meta">
+        <span><b>Pat.</b> US11807761</span>
+        <span><b>Sede</b> Castellón, España</span>
+        <span><b>Instalaciones</b> 25.000 m²</span>
+        <span><b>Capítulos</b> 06</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CH. 02 — CAPABILITIES ================= -->
+  <section class="chapter ch--dark" data-chapter="02" data-chapter-title="Capabilities">
+    <div class="sc-wrap chapter__pad">
+      <div class="sc-stack prose" data-sc-in data-sc-stagger="60">
+        <span class="eyebrow">Capabilities</span>
+        <h2 class="sc-display sc-display--lg">Diseñamos el material, el proceso y la industrialización</h2>
+        <p class="sc-body">No partimos de un catálogo: partimos de un requisito. Definimos la composición óptima en función de las prestaciones, el proceso y la aplicación final, y la llevamos hasta producción repetible.</p>
+      </div>
+
+      <div class="ledger" data-sc-in data-sc-stagger="80">
+        <div class="ledger__row">
+          <span class="ledger__num">01</span>
+          <span class="ledger__label">Ingeniería de materiales</span>
+          <span class="ledger__dur">2 semanas</span>
+        </div>
+        <div class="ledger__row">
+          <span class="ledger__num">02</span>
+          <span class="ledger__label">CAD y prueba real de vuelo</span>
+          <span class="ledger__dur">3 semanas</span>
+        </div>
+        <div class="ledger__row">
+          <span class="ledger__num">03</span>
+          <span class="ledger__label">Validación y producción en serie</span>
+          <span class="ledger__dur">5 semanas</span>
+        </div>
+        <div class="ledger__total">
+          <span>De requisito a serie industrial</span>
+          <b><span data-sc-count="0 10">0</span> semanas</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CH. 03 — TECHNOLOGIES (signature move) ================= -->
+  <section class="chapter ch--light" data-chapter="03" data-chapter-title="Technologies">
+    <div class="sc-wrap chapter__pad">
+      <div class="sc-stack prose" data-sc-in data-sc-stagger="60">
+        <span class="eyebrow">Technologies</span>
+        <h2 class="sc-display sc-display--lg">Dos tecnologías propias, un mismo origen</h2>
+        <p class="sc-body">Grafeno funcionalizado, fibras y resinas combinados en un proceso propietario que sustituye, a nivel estructural molecular, las fuerzas de Van der Waals por uniones covalentes. De MultiLayer sale la construcción por capas; de GOHNEX, la libertad geométrica.</p>
+      </div>
+
+      <div class="techsplit">
+        <figure data-sc-reveal="left" data-sc-reveal-at="0.05 0.4">
+          <img src="assets/multilayer-parts.jpg" alt="Piezas MultiLayer de gran formato" width="1600" height="1067">
+          <figcaption>MultiLayer — piezas de gran formato sin juntas, hasta 10 metros.</figcaption>
+        </figure>
+        <figure data-sc-reveal="right" data-sc-reveal-at="0.08 0.42">
+          <img src="assets/gohnex-parts.jpg" alt="Componentes GOHNEX de geometría compleja" width="1600" height="1067">
+          <figcaption>GOHNEX — geometrías 3D sin restricción de forma, alta resistencia al impacto.</figcaption>
+        </figure>
+      </div>
+      <div style="margin-top:var(--sc-6)">
+        <span class="spectag">450–1.100 MPa</span>
+        <span class="spectag">−80 °C a +210 °C</span>
+        <span class="spectag">95% reciclable</span>
+        <span class="spectag">EPD Verified</span>
+      </div>
+
+      <!-- signature move: the layer section — a real cross-section of MultiLayer's
+           signature-management architecture, peeling apart under scroll. Bespoke
+           JS below drives it off IntersectionObserver, no engine act involved. -->
+      <div class="layersec" data-layersec style="margin-top:var(--sc-10)">
+        <div class="layersec__diagram">
+          <div class="layerstack" data-layerstack>
+            <div class="layerstack__plate" data-layer="0"><b>01</b> Matriz polimérica</div>
+            <div class="layerstack__plate" data-layer="1"><b>02</b> Carga absorbente EM</div>
+            <div class="layerstack__plate" data-layer="2"><b>03</b> Carga dieléctrica</div>
+            <div class="layerstack__plate" data-layer="3"><b>04</b> Refuerzo estructural</div>
+            <div class="layerstack__plate" data-layer="4"><b>05</b> Aditivos funcionales</div>
+          </div>
+        </div>
+        <div class="laysteps">
+          <div class="laystep" data-laystep="0">
+            <h3>Matriz polimérica</h3>
+            <p>La resina base que une todo el sistema en una sola pieza continua, sin costuras.</p>
+            <div class="laystep__mats">Epoxi · ureacrílicas</div>
+          </div>
+          <div class="laystep" data-laystep="1">
+            <h3>Carga absorbente electromagnética</h3>
+            <p>Disipa energía radar en forma de calor controlado: es la base del signature management.</p>
+            <div class="laystep__mats">Nanoscrolls de grafeno · GOHXi · ferritas Fe₃O₄</div>
+          </div>
+          <div class="laystep" data-laystep="2">
+            <h3>Carga dieléctrica</h3>
+            <p>Adapta la impedancia entre el aire y el material, para que la energía entre sin reflejarse.</p>
+            <div class="laystep__mats">Alúmina · nanocerámicas · microesferas de vidrio</div>
+          </div>
+          <div class="laystep" data-laystep="3">
+            <h3>Refuerzo estructural</h3>
+            <p>La capa composite que aporta la estabilidad mecánica: esto sigue siendo, ante todo, una pieza que carga.</p>
+            <div class="laystep__mats">Fibra de vidrio · aramida</div>
+          </div>
+          <div class="laystep" data-laystep="4">
+            <h3>Aditivos funcionales</h3>
+            <p>Agentes tixotrópicos y dispersantes: lo que hace que las cuatro capas anteriores se puedan fabricar de verdad, en serie.</p>
+            <div class="laystep__mats">Agentes tixotrópicos · dispersantes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- authored silence: the breath before the peak -->
+    <div class="breath" aria-hidden="true"><div class="breath__line"></div></div>
+  </section>
+
+  <!-- ================= CH. 04 — PROVEN IN UAV (the peak) ================= -->
+  <section class="chapter ch--dark" data-chapter="04" data-chapter-title="Proven in UAV">
+    <div class="peak">
+      <div class="peak__bg" data-sc-parallax="0.7">
+        <img src="assets/uav-operator.jpg" alt="Militar sosteniendo un UAV con alas Graphenglass en un aeródromo" width="1920" height="1281">
+      </div>
+      <div class="peak__scrim"></div>
+      <div class="peak__copy">
+        <span class="eyebrow" style="color:#8FB4F5">Proven in UAV</span>
+        <p class="peak__quote">Alas de <em>120 gramos</em> por semiala, en las manos de un operador real, en un aeródromo real.</p>
+        <div class="peak__figures">
+          <div class="peak__fig"><b><span data-sc-count="0 120">0</span> g</b><span>Por semiala</span></div>
+          <div class="peak__fig"><b>Apertura en vuelo</b><span>Lanzamiento y despliegue</span></div>
+          <div class="peak__fig"><b>Serie</b><span>Fabricación repetible</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="peak__strip">
+      <img src="assets/uav-semiwings.jpg" alt="Semialas ultraligeras recién fabricadas" width="900" height="675">
+      <img src="assets/uav-launch.jpg" alt="UAV en pleno vuelo tras el lanzamiento" width="900" height="675">
+      <img src="assets/uav-airframe.jpg" alt="Aeroestructura UAV completa vista desde atrás" width="900" height="675">
+    </div>
+    <div class="sc-wrap chapter__pad">
+      <p class="sc-body" style="max-width:52ch">El caso sirve para demostrar la metodología, no para definir el límite del negocio: la misma capacidad resuelve estructuras, protección, movilidad y sistemas desplegables.</p>
+    </div>
+  </section>
+
+  <!-- ================= CH. 05 — INDUSTRIALIZATION ================= -->
+  <section class="chapter ch--light" data-chapter="05" data-chapter-title="Industrialization">
+    <div class="sc-wrap chapter__pad">
+      <span class="eyebrow">Industrialization</span>
+      <h2 class="sc-display sc-display--lg" style="max-width:16ch">El salto que casi nadie da</h2>
+      <p class="sc-body" style="margin-top:var(--sc-4);max-width:56ch">GraphenGlass diseña el material y desarrolla la solución. GraphenTower, la plataforma industrial del grupo, la fabrica a escala.</p>
+
+      <div class="plant" style="margin-top:var(--sc-9)">
+        <figure data-sc-reveal="up" data-sc-reveal-at="0.1 0.5">
+          <img src="assets/plant-composite-tubes.jpg" alt="Planta industrial con series de piezas composite almacenadas" width="1600" height="1280">
+        </figure>
+        <div class="plant__stats" data-sc-in data-sc-stagger="90">
+          <div class="stat"><b><span data-sc-count="0 25,000">0</span> m²</b><span>Instalaciones industriales, Castellón</span></div>
+          <div class="stat"><b>+<span data-sc-count="0 30,000">0</span></b><span>Unidades composite fabricadas</span></div>
+          <div class="stat"><b>Procesos propios</b><span>Ingeniería interna, eficiencia y repetibilidad</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CH. 06 — CLOSE / COLOPHON ================= -->
+  <section class="chapter ch--dark" data-chapter="06" data-chapter-title="Close">
+    <div class="sc-wrap colophon">
+      <span class="eyebrow">Cuéntanos el reto</span>
+      <h2>Si hoy ningún material estándar lo resuelve, ese es nuestro punto de partida.</h2>
+      <p class="colophon__cta"><a href="mailto:info@graphenglass.com?subject=Cu%C3%A9ntanos%20el%20reto">Escribir a info@graphenglass.com →</a></p>
+
+      <div class="colophon__plate">
+        <span>Graphenglass SL</span>
+        <span>Castellón, España</span>
+        <span>CIF B-12981874</span>
+        <span>Pat. US11807761</span>
+        <span><a href="../../../site/legal.html">Aviso legal</a></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="scrollcraft.js"></script>
+<script>
+ScrollCraft.mount(document.body);
+
+/* ---------- folio: updates as chapters pass (this grammar's nav) ---------- */
+(function () {
+  var chapters = Array.prototype.slice.call(document.querySelectorAll('[data-chapter]'));
+  var num = document.querySelector('[data-folio-num]');
+  var title = document.querySelector('[data-folio-title]');
+  if (!chapters.length || !('IntersectionObserver' in window)) return;
+  var current = null;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && e.target !== current) {
+        current = e.target;
+        num.textContent = current.getAttribute('data-chapter');
+        title.textContent = current.getAttribute('data-chapter-title');
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+  chapters.forEach(function (c) { io.observe(c); });
+})();
+
+/* ---------- signature move: the layer section ----------
+   A real cross-section of MultiLayer's signature-management architecture.
+   Each of the five real layers (matrix, EM-absorbent charge, dielectric
+   charge, structural reinforcement, functional additives) highlights on the
+   sticky diagram as its own step scrolls through the reading column.
+   Bespoke to this page: driven by our own IntersectionObserver and CSS
+   classes, not an engine act, not a parameter change on a kit device. */
+(function () {
+  var steps = Array.prototype.slice.call(document.querySelectorAll('[data-laystep]'));
+  var plates = Array.prototype.slice.call(document.querySelectorAll('[data-layer]'));
+  if (!steps.length || !plates.length || !('IntersectionObserver' in window)) return;
+  function activate(i) {
+    steps.forEach(function (s) { s.classList.toggle('is-active', s.getAttribute('data-laystep') === String(i)); });
+    plates.forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-layer') === String(i)); });
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) activate(e.target.getAttribute('data-laystep'));
+    });
+  }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+  steps.forEach(function (s) { io.observe(s); });
+  activate(0);
+})();
+</script>
+</body>
+</html>
