@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuéntanos el reto — Graphenglass</title>
+<meta name="description" content="Inicia un proyecto de desarrollo de material, proceso o industrialización con Graphenglass. Castellón, España.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="index.html">Graphenglass<sup>◇</sup></a>
+    <nav class="nav">
+      <a href="capabilities.html">Capabilities</a>
+      <a href="technologies.html">Technologies</a>
+      <a href="applications.html">Applications</a>
+      <a href="industrialization.html">Industrialization</a>
+      <a href="about.html">Compañía</a>
+    </nav>
+    <a class="btn btn--primary btn--sm header-cta" href="contact.html" aria-current="page">Cuéntanos el reto</a>
+    <button class="nav-toggle" aria-expanded="false">Menú</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero hero--page">
+    <div class="wrap hero__inner">
+      <p class="breadcrumb"><a href="index.html">Inicio</a> / Contacto</p>
+      <h1>Cuéntanos el reto</h1>
+      <p class="hero__sub">Si tienes un requisito técnico que hoy no resuelve ningún material estándar, ese es exactamente nuestro punto de partida.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split" style="align-items:start">
+        <div>
+          <span class="eyebrow">Formulario de proyecto</span>
+          <h2>Empecemos por el requisito</h2>
+          <p class="lead" style="margin-bottom:2rem">Cuanto más concreto sea el problema, más rápida es la primera valoración técnica.</p>
+
+          <form class="form" data-project-form novalidate>
+            <div class="field">
+              <label for="name">Nombre</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="company">Empresa / institución</label>
+              <input id="company" name="company" type="text" autocomplete="organization" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="phone">Teléfono (opcional)</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+
+            <input type="hidden" name="origen" value="GG">
+
+            <div class="field">
+              <label for="lead-type">Tipo de solicitud</label>
+              <select id="lead-type" name="lead_type" required>
+                <option value="">Selecciona una opción</option>
+                <option value="desarrollo">Desarrollo — tengo un reto técnico</option>
+                <option value="fabricacion">Fabricación — necesito producir a escala</option>
+                <option value="venta">Venta — busco producto estándar</option>
+                <option value="prescripcion">Prescripción — documentación técnica</option>
+                <option value="distribucion">Distribución</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="application">Aplicación</label>
+              <select id="application" name="application" required>
+                <option value="">Selecciona una opción</option>
+                <option value="uav-defence">UAV / Defence</option>
+                <option value="infraestructura">Infraestructura</option>
+                <option value="arquitectura">Arquitectura</option>
+                <option value="otra">Otra</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="challenge">Descripción del reto</label>
+              <textarea id="challenge" name="challenge" placeholder="Qué tiene que hacer la pieza, qué falla hoy, condiciones de servicio (cargas, temperatura, intemperie), restricciones geométricas…" required></textarea>
+            </div>
+
+            <div class="field">
+              <label for="volume">Volumen estimado</label>
+              <select id="volume" name="volume">
+                <option value="">Selecciona una opción</option>
+                <option value="prototipo">Prototipo</option>
+                <option value="serie-corta">Serie corta</option>
+                <option value="gran-serie">Gran serie</option>
+                <option value="no-definido">No definido todavía</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label class="check">
+                <input type="checkbox" name="rgpd" required>
+                <span>He leído y acepto la <a href="legal.html">política de privacidad</a>. Consiento el tratamiento de mis datos para gestionar esta solicitud.</span>
+              </label>
+            </div>
+
+            <div class="full">
+              <button class="btn btn--primary" type="submit">Enviar solicitud</button>
+              <p data-form-note hidden style="margin-top:1rem;font-size:.86rem;color:var(--text-mute)"></p>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <div class="card" style="background:var(--mist)">
+            <span class="card__num">Contacto directo</span>
+            <h3>Graphenglass SL</h3>
+            <p>Castellón, España<br>
+            <a class="link-arrow" href="mailto:info@graphenglass.com">info@graphenglass.com</a></p>
+          </div>
+
+          <div class="card" style="margin-top:24px">
+            <span class="card__num">¿No es un proyecto de desarrollo?</span>
+            <h3>Te dirigimos al interlocutor correcto</h3>
+            <p><strong>Fabricar a escala</strong> un producto o proceso ya definido → GraphenTower.</p>
+            <p><strong>Comprar o prescribir producto estándar</strong> (postes, columnas de alumbrado) → marcas de producto del grupo.</p>
+            <p style="font-size:.85rem;color:var(--text-mute)">Si nos escribes aquí, derivamos internamente la solicitud sin que tengas que repetirla.</p>
+          </div>
+
+          <div class="card" style="margin-top:24px">
+            <span class="card__num">Qué pasa después</span>
+            <h3>Primera respuesta técnica</h3>
+            <ul class="checklist" style="margin-top:1rem">
+              <li>Revisamos el requisito y las condiciones de servicio</li>
+              <li>Valoramos qué plataforma encaja: MultiLayer o GOHNEX</li>
+              <li>Proponemos alcance y calendario del desarrollo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Graphenglass<sup>◇</sup></div>
+        <p>Ingeniería de materiales compuestos con grafeno. Del requisito técnico a la producción en serie.</p>
+        <p>Castellón, España<br><a href="mailto:info@graphenglass.com">info@graphenglass.com</a></p>
+      </div>
+      <div>
+        <h4>Capacidades</h4>
+        <ul>
+          <li><a href="capabilities.html">Capabilities</a></li>
+          <li><a href="industrialization.html">Industrialization</a></li>
+          <li><a href="contact.html">Iniciar proyecto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Tecnologías</h4>
+        <ul>
+          <li><a href="technologies.html">Technologies</a></li>
+          <li><a href="multilayer.html">MultiLayer</a></li>
+          <li><a href="gohnex.html">GOHNEX</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Aplicaciones</h4>
+        <ul>
+          <li><a href="uav-defence.html">UAV / Defence</a></li>
+          <li><a href="infrastructure.html">Infrastructure</a></li>
+          <li><a href="architectural.html">Architectural</a></li>
+          <li><a href="about.html">Compañía</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="funding">
+      Espacio reservado al bloque legalmente exigible de proyectos con financiación pública (AVI, IVACE, FEDER, Generalitat Valenciana) y a los logotipos correspondientes. Pendiente de revisar qué ayudas siguen vigentes antes de publicar.
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="y">2026</span> Graphenglass SL · CIF B-12981874</span>
+      <span><a href="legal.html">Aviso legal y privacidad</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
