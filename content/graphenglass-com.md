@@ -128,7 +128,7 @@ Desglose publicable: Ingeniería de materiales **2 semanas** · CAD y prueba rea
 >
 > GraphenGlass diseña el material y desarrolla la solución. **GraphenTower**, la plataforma industrial del grupo, la fabrica a escala.
 
-**Cifras:** instalaciones industriales en Castellón · procesos propios · más de 30.000 unidades composite fabricadas · producción de grandes series con repetibilidad garantizada.
+**Cifras:** **25.000 m²** de instalaciones industriales en Castellón · procesos propios · más de 30.000 unidades composite fabricadas · producción de grandes series con repetibilidad garantizada.
 
 > Esto es lo que separa un desarrollo de laboratorio de una solución industrial: cuando el proyecto está validado, no hay que buscar quién lo fabrique.
 
@@ -303,7 +303,7 @@ Se conservan los textos de valor de la web actual, pero integrados como aplicaci
 Desarrollo del bloque 4 de home.
 
 1. **El salto que casi nadie da** — desarrollar un material es una cosa; fabricarlo en serie, con repetibilidad y coste industrial, es otra. El grupo cubre las dos.
-2. **La plataforma industrial** — instalaciones en Castellón, procesos propios de desarrollo interno, eficiencia y repetibilidad, +30.000 unidades composite fabricadas.
+2. **La plataforma industrial** — 25.000 m² de instalaciones en Castellón, procesos propios de desarrollo interno, eficiencia y repetibilidad, +30.000 unidades composite fabricadas.
 3. **Qué aporta a un proyecto de desarrollo** — ingeniería de fabricación, configuración del proceso productivo, transferencia de proceso, scale-up, producción de grandes series.
 4. **Casos industriales** como prueba de capacidad: TowerPole, TowerLum y UAV / Defence.
 5. **Salida clara:** si lo que necesitas es fabricar a escala un producto o proceso que ya tienes definido, tu interlocutor es GraphenTower.
@@ -372,10 +372,21 @@ Datos societarios a mantener: GRAPHENGLASS SL · Ronda Mijares, 11 · 12001 Cast
 
 ---
 
-## 11. Pendientes antes de publicar
+## 11. Datos corporativos fijados
 
-1. **Normalizar los datos corporativos de superficie industrial.** Hay tres cifras distintas en la documentación: 12.000 m² (presentación comercial, pág. 2), 24.000 m² de instalaciones con 12.500 m² de nave (pág. 23) y 30.000 m² (presentación de estructura, dip. 6). Además, "+30.000" aparece como unidades composite fabricadas, lo que puede estar generando la confusión. Hay que fijar una cifra única y usarla en las cuatro webs.
-2. **Idioma.** El contenido está redactado en español con nomenclatura técnica y CTAs en inglés (como la propia presentación de estructura). Para UAV / Defence e industria internacional hará falta versión EN completa: decidir si ES/EN desde el lanzamiento o EN en segunda fase.
-3. **Framing de GraphenTower** en el texto: "plataforma industrial del grupo" (usado aquí) frente a "nuestra división de industrialización". GraphenTower SL es sociedad independiente; conviene fijar una fórmula única para todo el ecosistema.
-4. **Fichas técnicas de las series Architectural y Ambient**: no existen. Sin ellas, la sección se queda igual de coja que en la web actual.
-5. **Material gráfico**: la web actual solo tiene imágenes de celosías y fachadas. Hace falta banco de imágenes de UAV, componentes de defensa, planta industrial y piezas MultiLayer/GOHNEX.
+Cifra única para todo el ecosistema de webs (sustituye a las distintas versiones que circulaban en la documentación anterior):
+
+| Dato | Valor oficial |
+|---|---|
+| Instalaciones industriales | **25.000 m²** (Castellón, España) |
+| Producción acumulada | +30.000 unidades composite |
+| Patente | US11807761 |
+
+---
+
+## 12. Pendientes antes de publicar
+
+1. **Idioma.** El contenido está redactado en español con nomenclatura técnica y CTAs en inglés (como la propia presentación de estructura). Para UAV / Defence e industria internacional hará falta versión EN completa: decidir si ES/EN desde el lanzamiento o EN en segunda fase.
+2. **Framing de GraphenTower** en el texto: "plataforma industrial del grupo" (usado aquí) frente a "nuestra división de industrialización". GraphenTower SL es sociedad independiente; conviene fijar una fórmula única para todo el ecosistema.
+3. **Fichas técnicas de las series Architectural y Ambient**: no existen. Sin ellas, la sección se queda igual de coja que en la web actual.
+4. **Material gráfico**: la web actual solo tiene imágenes de celosías y fachadas. Hace falta banco de imágenes de UAV, componentes de defensa, planta industrial y piezas MultiLayer/GOHNEX.
